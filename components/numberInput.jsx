@@ -23,7 +23,7 @@ function NumberInput({onEnter}) {
 				style={styles.textInput}/>
 		</View>
 		<View>
-			<CustomButton onPress={()=>pressHandle(num)} bgColor="#2f2e41">CHECK</CustomButton>
+			<CustomButton onPress={()=>pressHandle(num)} bgColor="#1a1c3f">CHECK</CustomButton>
 		</View>
 	</View> );
 }
@@ -31,15 +31,16 @@ const styles = StyleSheet.create({
 	numberContainer: {
 		marginTop: 48,
 		alignItems: 'center',
-		backgroundColor: '#6c63ff33',
+		backgroundColor: '#1f997826',
 		paddingVertical: 16
 	},
 	textInput: {
 		width: 200,
+        fontFamily: 'Jua',
 		fontSize: 48,
 		textAlign: 'center',
-		borderBottomColor: "#2f2e41",
-		color: '#2f2e41',
+		borderBottomColor: "#1a1c3f",
+		color: '#1a1c3f',
 		borderBottomWidth: 2, 
 		padding: 6,
 	}
