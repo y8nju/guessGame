@@ -14,6 +14,7 @@ export default function App() {
 	const [target, setTarget] = useState(null);
 	const [startAt, setStartAt] = useState(0);
 	const [count, setCount] = useState(0);
+	const [outCount, setOutCount] = useState(0);
 	const [onGame, setOnGame] = useState(true);
 
 	const targetCreateHandle = () => {
@@ -31,9 +32,10 @@ export default function App() {
 		console.log(ar);
 	}
 
-	const endHandle = (triedCount) => {
+	const endHandle = (triedCount, outCnt) => {
 		setCount(triedCount);
 		setOnGame(false);
+		setOutCount(outCnt);
 	}
 
 	let currentScreen = null
@@ -41,11 +43,11 @@ export default function App() {
 		currentScreen = <ReadyGame onStart={targetCreateHandle} />
 	}else {
 		if(onGame) {
-			currentScreen =<PlayGame target={target} oneEnd={endHandle}/>
+			currentScreen =<PlayGame target={target} onEnd={endHandle} onOut={setOutCount}/>
 		}else {
 			const elapsed = ((Date.now() - startAt) / 1000).toFixed(1);
 			currentScreen =<EndGame target={target} count={count} elapsed={elapsed}
-			onRestart={()=> setTarget(null)} />
+			onRestart={()=> setTarget(null)} outCount={outCount}/>
 		}
 	}
 
